@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Summernote</title>
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<script src="js/jquery.js"></script> 
+<script src="js/bootstrap.js"></script> 
+
+<!-- include summernote css/js -->
+<link href="css/summernote.css" rel="stylesheet">
+<script src="js/summernote.js"></script>
+
+<script src="js/lang/summernote-es-ES.js"></script>
+
+</head>
+<body>
+<h3>SummerNote</h3>
+
+<h4>En un div</h4>
+
+<div id="summernotee">Hello Summernote</div>
+
+<script>
+	$('#summernotee').summernote();
+	
+</script>
+
+<h4>En un form</h4>
+
+<form method="post">
+  <textarea id="summernote" name="editordata"></textarea>
+</form>
+
+<script>
+	$('#summernote').summernote();
+	
+</script>
+
+
+<h4>Configuración de place holder y medidas</h4>
+
+<div id="summernote1"></div>
+
+<script>
+	$('#summernote1').summernote({
+        placeholder: 'Hello bootstrap 4',
+        tabsize: 2,
+        height: 100
+      });
+	
+</script>
+
+<br><br>
+<h4>mas medidas </h4>
+
+<div id="summernote2"></div>
+
+<script>
+	$('#summernote2').summernote({
+  height: 300,                 // set editor height
+  minHeight: null,             // set minimum height of editor
+  maxHeight: null,             // set maximum height of editor
+  focus: true                  // set focus to editable area after initializing summernote
+});
+	
+</script>
+
+<h4>Destroy</h4>
+
+<b>$('#summernote').summernote('destroy');
+</b><br>
+
+<h4>Destroy</h4>
+
+<b>$('#summernote').summernote('destroy');
+</b><br>
+<b>get & set Code</b><br>
+Get the HTML contents of the first summernote in the set of matched elements.
+
+<br><b>var markupStr = $('#summernote').summernote('code');</b><br>
+
+If you initialize multiple editor, You can get the HTML content of the second summernote with jQuery eq.
+
+<br><b>var markupStr = $('.summernote').eq(1).summernote('code');</b><br>
+
+A string of HTML to set as the content of each matched element.
+<br><b>
+	var markupStr = 'hello world'; <br>
+$('#summernote').summernote('code', markupStr);
+</b>
+<br><br>
+<h3>Lenguas</h3><br><br>
+<b>
+	$(document).ready(function() {<br>
+  $('#summernote').summernote({<br>
+    lang: 'ko-KR' // default: 'en-US'<br>
+  });<br>
+});
+</b>
+
+
+<br> <br> <br>
+<b>Para más info: </b> <a href="https://summernote.org/getting-started/">https://summernote.org/getting-started/</a>
+</body>
+</html>

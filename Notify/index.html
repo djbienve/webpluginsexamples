@@ -3,35 +3,91 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Alertify JS</title>
-	<link rel="stylesheet" href="css/alertify.css">
+	<link rel="stylesheet" href="css/alertify.min.css">
+  <link rel="stylesheet" href="css/themes/default.min.css">
+  <!-- <link rel="stylesheet" href="css/themes/semantic.min.css">  Este tema es buenisimo -->
 	<script src="js/alertify.min.js"></script>
 
 </head>
 <body>
-<h2>Alertify examples</h2>
+<h2>Alertify examples</h2><br>
+<p>
+  Este plugin te permite generar alertas y promp de manera facilisimo, es una maravilla probarlo <br>
+  Est capaz de generar Dialogos y/o Alertas al mismo tiempo veamos como funciona esta maravilla
+</p>
 
+<h3>Diálogos</h3> <br>
+
+<button class="btn btn-primary" onclick='dialogoAlerta()' value="">Alerta simple</button> <br><br><br>
+<button class="btn btn-primary" onclick='dialogoConfirmar()' value="">Alerta Confirmación</button> <br><br>
+
+<button class="btn btn-primary" onclick='dialogoPrompt()' value="">Alerta recogida infor</button> <br><br>
+
+<h3>SIMPLES NOTIFICACIONES</h3> <br>
+
+<button class="btn btn-primary" onclick='success()' value="">Todo OK</button> <br><br><br>
+<button class="btn btn-primary" onclick='error()' value="">Error</button> <br><br>
+
+<button class="btn btn-primary" onclick='warning()' value="">Advertencia</button> <br><br>
+<button class="btn btn-primary" onclick='mensaje()' value="">Normal</button> <br><br>
 
 <script>	
-if(!alertify.myAlert){
-  //define a new dialog
-  alertify.dialog('myAlert',function factory(){
-    return{
-      main:function(message){
-        this.message = message;
-      },
-      setup:function(){
-          return { 
-            buttons:[{text: "cool!", key:27/*Esc*/}],
-            focus: { element:0 }
-          };
-      },
-      prepare:function(){
-        this.setContent(this.message);
-      }
-  }});
+
+function dialogoAlerta(){
+ alertify.alert('Titulo Alerta', 'Esto es una Alerta!', function(){
+  alertify.success('Graciass'); //lo que se ejecuta al terminar
+}); 
 }
-//launch it.
-alertify.myAlert("Browser dialogs made easy!");
+
+function dialogoConfirmar(){
+
+alertify.confirm('Titulo Confirmar', 'Quieres realizar acción?', function(){ 
+            alertify.success('Ok') }
+        , function(){ 
+
+            alertify.error('Cancel')
+
+});
+}
+
+//para recoger datos del usuario
+function dialogoPrompt(){
+
+alertify.prompt( 'Titulo del Prompt', 'Inserta tu nombre', 'Ataulfo Gonzalez'
+               , function(evt, value) { alertify.success('You entered: ' + value) }
+               , function() { alertify.error('Cancel') });
+
+}
+
+//NOTIFICACIONES
+ function success(){
+  alertify.success('Forma 01'); // una forma de hacer
+
+  //otra forma de hacer
+  alertify.notify('Forma 02', 'success', 5, function(){  
+    console.log('dismissed'); // se ejecuta tras los 5 segundos de espera
+
+  });
+ }
+ function error(){
+
+   alertify.error('Forma 01');
+  alertify.notify('Forma 02', 'error', 5, function(){  console.log('dismissed'); });
+
+ }
+ function warning(){
+  alertify.warning('Forma 01');
+
+  alertify.notify('Forma 02', 'warning', 5, function(){  console.log('dismissed'); });
+ }
+ //un mensaje normal y corriente
+
+ function mensaje(){
+  alertify.message('Forma 01');
+
+  alertify.notify('Forma 02', 'message', 5, function(){  console.log('dismissed'); });
+ }
+
 
 </script>
 
@@ -39,7 +95,7 @@ alertify.myAlert("Browser dialogs made easy!");
 	<br><br><br>
 	Para más info:
 	<br>
-	<a href="https://alertifyjs.com/">https://alertifyjs.com/</a>
+	<a href="https://alertifyjs.com/">https://alertifyjs.com/ (documentación extendida de cada boton)</a>
 	
 </body>
 </html>

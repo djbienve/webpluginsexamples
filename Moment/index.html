@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Moment, Date time  manager</title>
+	<script src="js/jquery-3.3.1.js"></script> <!--No es necesario Jquery, pero lo pongo para facilitarme el trabajo-->
+	<script src="js/moment.js"></script> 
+	<script src="js/moment-with-locales.min.js"></script>
+</head>
+<body>
+	<h3>Este plugins gestiona las fechas pero no genera calendarios, el de caledarios hace uso de este, pero viene bien por si tienes que gestionar tu mismo las fechas</h3>
+<div>
+	<p id="1" ></p>
+	<p id="2"></p>
+	<p id="3"></p>
+	<p id="4"></p>
+
+</div>
+
+<img src="img/1.png" alt=""> <br>
+
+<img src="img/2.png" alt="">
+<script>
+
+//traduccirlo en español, por defecto viene en ingles
+moment.lang('es', {
+  months: 'Enero_Febrero_Marzo_Abril_Mayo_Junio_Julio_Agosto_Septiembre_Octubre_Noviembre_Diciembre'.split('_'),
+  monthsShort: 'Enero._Feb._Mar_Abr._May_Jun_Jul._Ago_Sept._Oct._Nov._Dec.'.split('_'),
+  weekdays: 'Domingo_Lunes_Martes_Miercoles_Jueves_Viernes_Sabado'.split('_'),
+  weekdaysShort: 'Dom._Lun._Mar._Mier._Jue._Vier._Sab.'.split('_'),
+  weekdaysMin: 'Do_Lu_Ma_Mi_Ju_Vi_Sa'.split('_')
+ } );
+
+
+
+	$('#1').html(moment().format('MMMM Do YYYY, h:mm:ss a'));
+	$('#2').html(moment.locale());
+	$('#3').html(moment().format('LLLL'));
+	$('#4').html(moment().calendar());
+
+	var localLocale = moment('1993-10-23 00:00:00');
+moment.locale('es');
+localLocale.locale(false);
+//alert(localLocale.format('LLLL')); 
+
+</script>
+
+<br><br><br>
+<b>Para más información:</b><br>
+<a href="http://momentjs.com/">http://momentjs.com/</a>
+</body>
+</html>

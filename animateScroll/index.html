@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Animate Scroll</title>
+	<link rel="stylesheet" type="text/css" href="css/custom.css" />
+                <script src="js/jquery-1.8.3.min.js"></script>
+                <script src="js/animatescroll.js"></script>
+</head>
+<body>
+<h2>Script que te permite moverte entre elementos en un scroll</h2>
+	<div id="1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate delectus quisquam repellendus, ipsam temporibus<br><br> provident, deserunt officia! Dignissimos, impedit? Asperiores quas, assumenda. Architecto aperiam, assumenda. Blanditiis, iure odit cum deleniti!</div>
+	<br><br><br><br><br><br><br>
+	<div style="background-color: black;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate in tempore veritatis <br><br>qui non! Quo repellendus, numquam totam, aspernatur deserunt hic earum a. Hic error facilis ipsam. Assumenda fugit, eaque.</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div style="background-color: yellow;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate in tempore veritatis<br><br> qui non! Quo repellendus, numquam totam, aspernatur deserunt hic earum a. Hic error facilis ipsam. Assumenda fugit, eaque.</div><br><br><br><br><br><br><br><br>
+	<div style="background-color: blue;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate in tempore veritatis <br><br>qui non! Quo repellendus, numquam totam, aspernatur deserunt hic earum a. Hic error facilis ipsam. Assumenda fugit, eaque.</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div style="background-color: red;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate in tempore veritatis<br><br> qui non! Quo repellendus, numquam totam, aspernatur deserunt hic earum a. Hic error facilis ipsam. Assumenda fugit, eaque.</div><br><br><br><br><br><br><br><br><br><br><br>
+	<div style="background-color: orange;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate in tempore<br><br> veritatis qui non! Quo repellendus, numquam totam, aspernatur deserunt hic earum a. Hic error facilis ipsam. Assumenda fugit, eaque.</div><br><br><br><br><br><br><br><br></br>
+	
+	<button onclick="subirNormal()">subir Normal</button><br><br><br><br><br><br>
+	
+	
+	<div id="section-4">
+                            <div class="content-wrapper w60 disp_inl_blk"> 
+                                <h1>Easing Effects</h1>
+                                <p>This plugin supports more than 30 different styles of scrolling. The easing option lets you choose a particular style of scrolling according to your choice.</p>
+                                <p>Some of them are shown here:</p>
+                                <pre><code class="language-javascript">$('#section-2').animatescroll({scrollSpeed:2000,easing:'easeInOutBack'});</code></pre>
+                                <pre><code class="language-javascript">$('#section-2').animatescroll({scrollSpeed:2000,easing:'easeOutBounce'});</code></pre>
+                                <pre><code class="language-javascript">$('#section-2').animatescroll({scrollSpeed:3000,easing:'easeOutElastic'});</code></pre>
+                                <pre><code class="language-javascript">$('#section-2').animatescroll({padding:-100});</code></pre>
+                            </div>
+                            <div class="content-wrapper w30 fr">
+                                <div class="easing-buttons">
+                                    <strong>Click the buttons below for a demo:</strong><br/><br/>
+                                    <button class="btn" onclick="$('#1').animatescroll({scrollSpeed:2000,easing:'easeInOutBack'});">easeInOutBack</button><br/><br/>
+                                    <button class="btn" onclick="$('#1').animatescroll({scrollSpeed:2000,easing:'easeOutBounce'});">easeOutBounce</button><br/><br/>
+                                    <button class="btn" onclick="$('#1').animatescroll({scrollSpeed:3000,easing:'easeOutElastic'});">easeOutElastic</button><br/><br/>
+                                    <button class="btn" onclick="$('#1').animatescroll({padding:-100});">with padding</button>
+                                </div>
+                            </div>                            
+                   </div>
+
+
+	<br><br><br><br>
+	<b>Para más info:</b><br>
+	<a href="https://plugins.compzets.com/animatescroll/"> https://plugins.compzets.com/animatescroll/</a>
+	<br><br><br><br>
+
+
+	<script>
+	function subirNormal(){
+		$('#1').animatescroll();
+	}	
+
+	</script>
+</body>
+</html>

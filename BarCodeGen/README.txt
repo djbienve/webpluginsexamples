@@ -1,0 +1,1 @@
+Plugin para generar códigos de BARRAS

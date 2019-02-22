@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ToolTipster</title>
+	<link rel="stylesheet" type="text/css" href="css/tooltipster.bundle.min.css" />
+	<!-- Solo para poder usar los temas disponibles para el ejemplo-->
+	<link rel="stylesheet" type="text/css" href="css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-borderless.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-light.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-noir.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-punk.min.css" />
+	<link rel="stylesheet" type="text/css" href="css/plugins/tooltipster/sideTip/themes/tooltipster-sideTip-shadow.min.css" />
+	<!-- aqui acaban la inclusion de temas, lo que sigue si es necesario-->
+
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/tooltipster.bundle.min.js"></script>
+</head>
+<body>
+	<h2>Este es un plugins para generar tooltips, los genera de varios tipos y de distintas formas:(mostrando el texto que ponemos en el title o un html entero)</h2>
+<br><br><br>
+
+<h4>Tootips en una imagen:</h4> <br>
+<img src="img/opera.png" class="tooltip" title="Este es el mensaje, que esta colocado en el title" width="30" height="30" />
+<br><br>
+<h4>Tootips en una (span, div o lo que sea):</h4> <br>
+
+<span class="tooltip" title="Este es el title, Mensajee">Un Mensaje de texto</span>
+
+<h2>Estilos en los tooltips (es necesario incluir los .css de los distintos temas a usar y estan en /css/plugins/tooltipster/sideTip/themes )</h2> <br><br>
+
+<div id="themes">
+				<button id="Default" title="Mensaje con el estilo Default">Default</button>
+				<button id="Light" title="Mensaje con el estilo Light">Light</button>
+				<button id="Borderless" title="Mensaje con el estilo Borderless">Borderless</button>
+				<button id="Punk" title="Mensaje con el estilo Punk">Punk</button>
+				<button id="Noir" title="Mensaje con el estilo Noir">Noir</button>
+				<button id="Shadow" title="Mensaje con el estilo Shadow">Shadow</button>
+			</div> <br><br>
+<img src="img/1.png" />
+
+<br><br><br>
+
+<h2>HTML dentro de tu tooltips (asegurate que el div que contiene tu contenido html no este con el display activo)</h2> <br><br>
+
+<span class="tooltipDiv" data-tooltip-content="#tooltip_content">PASA EL RATON POR AQUI PARA VER EL HTML DENTRO DE UN TOOLTIPS</span>
+
+<div class="tooltip_templates" style="display: none;">
+    <span id="tooltip_content">
+    	<button>Boton1</button>
+        <img src="img/opera.png" /> <strong>Este es el contenido de mi tooltips con Logo Opera!!</strong>
+    </span>
+</div>
+
+<script>
+        $(document).ready(function() {
+            $('.tooltip').tooltipster();
+            //Estilo Default:
+            $('#Default').tooltipster({
+			    theme: 'tooltipster-default'
+			});
+			//Estilo Light:
+            $('#Light').tooltipster({
+			    theme: 'tooltipster-light'
+			});
+			//Estilo Borderless:
+            $('#Borderless').tooltipster({
+			    theme: 'tooltipster-borderless'
+			});
+			//Estilo Punk:
+            $('#Punk').tooltipster({
+			   animation: 'fade',
+			   delay: 200,
+			   theme: 'tooltipster-punk',
+			   trigger: 'click'
+			});
+			//Estilo Noir:
+            $('#Noir').tooltipster({
+			    theme: 'tooltipster-noir'
+			});
+			//Estilo Shadow:
+            $('#Shadow').tooltipster({
+			    theme: 'tooltipster-shadow'
+			});
+
+			//HTML dentro de los tooltips
+			$('.tooltipDiv').tooltipster({
+			    contentCloning: true,
+			    interactive: true
+			});
+        });
+
+</script>
+
+<br><br><br><br><br>
+
+<b>Para más información: </b> <a href="http://iamceege.github.io/tooltipster/">http://iamceege.github.io/tooltipster/</a>	
+</body>
+</html>

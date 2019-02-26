@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>DropDowns</title>
+	<link rel="stylesheet" href="jquery.sweet-modal.min.css">
+	<script src="jquery-3.3.1.js"></script>
+	<script src="jquery.sweet-modal.min.js"></script>
+</head>
+<body>
+
+<input type="button" onclick="alerta()" value="Alerta Sweet" /> <br><br>
+<input type="button" onclick="alertaSuccess()" value="Alerta con el success" /> <br><br>
+<input type="button" onclick="alertaWarning()" value="Alerta Con warning" /> <br><br>
+<input type="button" onclick="alertaErrorIcon()" value="Alerta COn la X de error" /> <br><br>
+<input type="button" onclick="alertaConTitulo()" value="Alerta con titulo.." /> <br><br>
+<input type="button" onclick="alertaConfirmacion()" value="Alerta Confirmacion" /> <br><br>
+<input type="button" onclick="alertaConfirmarConTitulo()" value="Confirmar con titulo" /> <br><br>
+<input type="button" onclick="alertaPromp()" value="Promp recoger info" /> <br><br>
+<input type="button" onclick="alertaPrompConValor()" value="Prompr recoger con valor" /> <br><br>
+<input type="button" onclick="alertaConTab()" value="Alerta Con tabs " /> <br><br>
+<input type="button" onclick="alertaConTabBotones()" value="Alerta Con tabs y botones" /> <br><br>
+<input type="button" onclick="alertaConTabIconos()" value="Alerta Con tabs e ICONOS" /> <br><br>
+<input type="button" onclick="alertaTabConHTML()" value="Alerta Con HTML" /> <br><br>
+<input type="button" onclick="alertaTabConHTMLDark()" value="Alerta Con HTML Dark" /> <br><br>
+<input type="button" onclick="alertaYoutube()" value="Alerta con video de Youtube" /> <br><br>
+ 
+
+
+
+<br>
+<br><br><br>
+<p><a href="https://sweet-modal.adepto.as/">https://sweet-modal.adepto.as/</a></p>
+
+<script>
+	function alerta(){
+		$.sweetModal('This is an alert.');
+	}
+
+	function alertaWarning(){
+		$.sweetModal({
+			content: 'This is a warning.',
+			icon: $.sweetModal.ICON_WARNING
+		});
+	}
+	function alertaSuccess(){
+		$.sweetModal({
+			content: 'This is a success.',
+			icon: $.sweetModal.ICON_SUCCESS
+		});
+	}
+	function alertaErrorIcon(){
+		
+			$.sweetModal({
+				content: 'Esto es un eeror',
+				title: 'Oh noes…',
+				icon: $.sweetModal.ICON_ERROR,
+
+				buttons: [
+					{
+						label: 'Tono Mal',
+						classes: 'redB'
+					}
+				]
+			});
+	}
+	function alertaConTitulo(){
+		$.sweetModal('Alerta Titulado', 'Contenido Alerta..');
+	}
+	function alertaConfirmacion(){
+		$.sweetModal.confirm('Confirmas please?', function() {
+			$.sweetModal('Gracias Por Confirmar!!');
+		});
+	}
+	function alertaConfirmarConTitulo(){
+		$.sweetModal.confirm('titulo Confirm', 'Confirmas please?', function() {
+				$.sweetModal('Thanks for confirming!');
+			}, function() {
+				$.sweetModal('You declined. That\'s okay!');
+			});
+	}
+	function alertaPromp(){
+		$.sweetModal.prompt('Can I haz cheezeburger?', null, null, function(val) {
+			$.sweetModal('You typed: ' + val);
+		});
+	}
+	function alertaPrompConValor(){
+		$.sweetModal.prompt('Can I haz cheezeburger?', 'Can I?', 'Nope', function(val) {
+			$.sweetModal('You typed: ' + val);
+		});
+	}
+	function alertaConTab(){
+		$.sweetModal({
+			title: {
+				tab1: {
+					label: 'Tab 1'
+				},
+
+				tab2: {
+					label: 'Tab 2'
+				}
+			},
+
+			content: {
+				tab1: 'Tab 1',
+				tab2: 'Tab 2'
+			}
+		});
+	}
+	function alertaConTabBotones(){
+		$.sweetModal({
+			title: {
+				tab1: {
+					label: 'Tab 1'
+				},
+
+				tab2: {
+					label: 'Tab 2'
+				}
+			},
+
+			content: {
+				tab1: 'Tab 1',
+				tab2: 'Tab 2'
+			},
+
+			buttons: {
+				someOtherAction: {
+					label: 'Action 2',
+					classes: 'secondaryB bordered flat',
+					action: function() {
+						return $.sweetModal('You clicked Action 2!');
+					}
+				},
+
+				someAction: {
+					label: 'Action 1',
+					classes: '',
+					action: function() {
+						return $.sweetModal('You clicked Action 1!');
+					}
+				},
+			}
+		});
+	}
+	function alertaConTabIconos(){
+		$.sweetModal({
+			title: {
+				tab1: {
+					label: 'Tab 1',
+					icon: '<svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#000000" d="M12,19.2C9.5,19.2 7.29,17.92 6,16C6.03,14 10,12.9 12,12.9C14,12.9 17.97,14 18,16C16.71,17.92 14.5,19.2 12,19.2M12,5A3,3 0 0,1 15,8A3,3 0 0,1 12,11A3,3 0 0,1 9,8A3,3 0 0,1 12,5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z" /></svg>'
+				},
+
+				tab2: {
+					label: 'Tab 2',
+					icon: '<svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#000000" d="M12,17L7,12H10V8H14V12H17L12,17M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z" /></svg>'
+				}
+			},
+
+			content: {
+				tab1: 'Tab 1',
+				tab2: 'Tab 2'
+			}
+		});
+	}
+	function alertaTabConHTML(){
+		$.sweetModal({
+			title: 'HTML Content',
+			content: 'You can place <b>anything</b> <i>you</i> want in here.'
+		});
+	}
+	function alertaTabConHTMLDark(){
+		$.sweetModal({
+			title: 'HTML Content',
+			content: 'You can place <b>anything</b> <i>you</i> want in here.',
+			theme: $.sweetModal.THEME_DARK
+		});
+	}
+	function alertaYoutube(){
+		$.sweetModal({
+			title: 'Will YouTube Ever Run Out Of Video IDs?',
+			content: 'https://www.youtube.com/watch?v=gocwRvLhDf8',
+			theme: $.sweetModal.THEME_DARK
+		});
+			}
+
+</script>
+
+</body>
+</html>

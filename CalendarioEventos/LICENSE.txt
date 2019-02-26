@@ -1,0 +1,4 @@
+Monthly 2.2.1 by Kevin Thornbloom is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+
+Este plugins es MONTHLY se puede usar para date picker y como calendario
+https://creativecommons.org/licenses/by/4.0/

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>DropDowns</title>
+	<link rel="stylesheet" href="jquery.sweet-dropdown.min.css">
+	<script src="jquery-3.3.1.js"></script>
+	<script src="jquery.sweet-dropdown.min.js"></script>
+</head>
+<body>
+
+<div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor" id="dropdown-standard">
+	<ul>
+		<li><a href="#">Item 1</a>></li>
+		<li><a href="#">Item 2</a></li>
+		<li class="divider"></li>
+		<li><a href="#">Item 3</a></li>
+	</ul>
+</div>
+
+<button data-dropdown="#dropdown-standard">Try out!</button>
+
+<div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor" id="dropdown-with-icons">
+	<ul>
+		<li><a href="#"><svg>...</svg> Item 1</a>></li>
+		<li><a href="#"><svg>...</svg> Item 2</a></li>
+		<li class="divider"></li>
+		<li><a href="#"><svg>...</svg> Item 3</a></li>
+	</ul>
+</div>
+
+<button data-dropdown="#dropdown-with-icons">Try out!</button>
+
+
+<div class="dropdown-menu dropdown-anchor-top-left dropdown-has-anchor dark" id="dropdown-dark-with-icons">
+	<ul>
+		<li><a href="#"><svg>...</svg> Item 1</a>></li>
+		<li><a href="#"><svg>...</svg> Item 2</a></li>
+		<li class="divider"></li>
+		<li><a href="#"><svg>...</svg> Item 3</a></li>
+	</ul>
+</div>
+
+<button data-dropdown="#dropdown-dark-with-icons">Try out!</button>
+
+
+
+<div class="dropdown-menu dropdown-anchor-left-center dropdown-has-anchor" id="dropdown-left-center">
+	<ul>
+		<li><a href="#">Item 1</a>></li>
+		<li><a href="#">Item 2</a></li>
+		<li class="divider"></li>
+		<li><a href="#">Item 3</a></li>
+	</ul>
+</div>
+
+
+<button data-dropdown="#dropdown-left-center">Try out!</button>
+
+<div class="dropdown-menu dropdown-anchor-top-left" id="dropdown-no-anchor-html">
+	<p>I am <b>HTML</b>-<i>Content</i>.</p>
+
+	<button>And a button!</button>
+</div>
+
+
+<button data-dropdown="#dropdown-no-anchor-html">Try out!</button>
+
+<br>
+<br><br><br>
+<p><a href="https://sweet-dropdown.adepto.as/">https://sweet-dropdown.adepto.as/</a></p>
+
+<script>
+	$.sweetDropdown.attachAll(); // Automatically called on page load
+	$.sweetDropdown.hideAll();
+	$('.trigger').sweetDropdown('detach');
+	$('.trigger').sweetDropdown('show');
+	$('.trigger').sweetDropdown('hide');
+	$('.trigger').sweetDropdown('enable');
+	$('.trigger').sweetDropdown('disable');
+
+</script>
+
+</body>
+</html>

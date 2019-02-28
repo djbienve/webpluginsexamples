@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Pruebas tablas-excell</title>
+	<link rel="stylesheet" href="css/tableexport.css">
+	<script src="js/jquery-3.3.1.js" ></script>
+	<script src="js/FileSaver.js"></script>
+	<script src="js/table2excel.js"></script>
+	<script src="js/tableexport.js" ></script>
+	<script src="js/xlsx.core.js"></script>
+	<script src="js/Blob.js"></script>
+	<script src="js/Blob.js"></script>
+</head>
+<body>
+
+	<table id="table">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td> 
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td> 
+    <td>94</td>
+  </tr>
+
+</table>
+<br><br><br>
+
+<input type="button" onclick="nomal();" value="Descargar normal Default">
+<br>
+<input type="button" onclick="nomal();" value="Descargar">
+
+<br><br><br>
+<a href="https://www.jqueryscript.net/table/Exporting-Html-Tables-To-CSV-XLS-XLSX-Text-TableExport.html">https://www.jqueryscript.net/table/Exporting-Html-Tables-To-CSV-XLS-XLSX-Text-TableExport.html</a>
+<script>
+
+function nomal(){
+
+	 $("#table").tableExport({
+
+  // Displays table headers (th or td elements) in the <thead>
+  headers: true,                    
+
+  // Displays table footers (th or td elements) in the <tfoot>    
+  footers: true, 
+
+  // Filetype(s) for the export
+  formats: ["xls", "csv", "txt"],           
+
+  // Filename for the downloaded file
+  fileName: "id",                         
+
+  // Style buttons using bootstrap framework  
+  bootstrap: false,
+
+  // Automatically generates the built-in export buttons for each of the specified formats   
+  exportButtons: true,                          
+
+  // Position of the caption element relative to table
+  position: "bottom",                   
+
+  // (Number, Number[]), Row indices to exclude from the exported file(s)
+  ignoreRows: null,                             
+
+  // (Number, Number[]), column indices to exclude from the exported file(s)              
+  ignoreCols: null,                   
+
+  // Removes all leading/trailing newlines, spaces, and tabs from cell text in the exported file(s)     
+  trimWhitespace: false,
+
+  // (Boolean), set direction of the worksheet to right-to-left (default: false)
+  RTL: false, 
+
+  // (id, String), sheet name for the exported spreadsheet, (default: 'id') 
+  sheetname: "id" ,
+  fileName: "Fichero"
+
+
+});
+
+}
+	
+</script>
+	
+	
+</body>
+</html>

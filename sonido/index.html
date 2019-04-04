@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Audio Test</title>
+</head>
+<body>
+ <script src="webcomponents-bundle.js"></script> 
+<script src="Tone.js"></script>
+<script src="tonejs-ui.js"></script>
+
+<button onclick="dale();">Dale</button> <br>
+<button onclick="unicoSonido();">unico song</button>
+<br><br>
+https://medium.com/dev-red/tutorial-lets-make-music-with-javascript-and-tone-js-f6ac39d95b8c
+<br><br>
+(mirar la tabla de notas)
+<br>
+http://marcgg.com/blog/2016/11/01/javascript-audio/
+<br><br>
+https://github.com/Tonejs/Tone.js/wiki/Time
+<script>
+
+
+function dale(){
+//unicoSonido("Eb3", "2n"); 
+unicoSonido("G4", "2m"); 
+wait(1000);
+unicoSonido("G5", "2n"); 
+
+
+}
+
+
+
+
+function unicoSonido($nota, $n){
+	const notes = ["C3", "Eb3", "G3", "Bb3"];
+
+const synth = new Tone.MembraneSynth().toMaster();
+// play a note with the synth we setup
+synth.triggerAttackRelease($nota, $n); 
+
+
+}
+
+function wait(ms){
+   var start = new Date().getTime();
+   var end = start;
+   while(end < start + ms) {
+     end = new Date().getTime();
+  }
+}
+
+
+</script>
+</body>
+</html>

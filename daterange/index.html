@@ -66,7 +66,7 @@ $(function() {
 </script>
 
 <!-- RANGOS DE FECHAS PREDEFINIDOS  -->
-<h4>rangos de fechas predefinidos</h4><br>
+<h4>rangos de fechas predefinidos y TRADUCIDO AL ESPAÑOL</h4><br>
 
 
 <div id="reportrange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 100%">
@@ -77,6 +77,15 @@ $(function() {
 <script type="text/javascript">
 $(function() {
 
+    moment.locale('es', {
+  months: 'Enero_Febrero_Marzo_Abril_Mayo_Junio_Julio_Agosto_Septiembre_Octubre_Noviembre_Diciembre'.split('_'),
+  monthsShort: 'Enero._Feb._Mar_Abr._May_Jun_Jul._Ago_Sept._Oct._Nov._Dec.'.split('_'),
+  weekdays: 'Domingo_Lunes_Martes_Miercoles_Jueves_Viernes_Sabado'.split('_'),
+  weekdaysShort: 'Dom._Lun._Mar._Mier._Jue._Vier._Sab.'.split('_'),
+  weekdaysMin: 'Do_Lu_Ma_Mi_Ju_Vi_Sa'.split('_')
+}); 
+
+
     var start = moment().subtract(29, 'days');
     var end = moment();
 
@@ -85,15 +94,48 @@ $(function() {
     }
 
     $('#reportrange').daterangepicker({
+      "locale": {
+        "format": "MM/DD/YYYY",
+        "separator": " - ",
+        "applyLabel": "Aplicar",
+        "cancelLabel": "Cancelar",
+        "fromLabel": "Desde",
+        "toLabel": "Hasta",
+        "customRangeLabel": "Personalizado",
+        "daysOfWeek": [
+            "Do",
+            "Lu",
+            "Ma",
+            "X",
+            "Ju",
+            "Vi",
+            "Sa"
+        ],
+        "monthNames": [
+            "Enero",
+            "Febrero",
+            "Marso",
+            "Abril",
+            "Mayo",
+            "Junio",
+            "Julio",
+            "Agosto",
+            "Septiembre",
+            "Octubre",
+            "Noviembre",
+            "Diciembre"
+        ],
+        "firstDay": 1
+    },
         startDate: start,
         endDate: end,
         ranges: {
-           'Today': [moment(), moment()],
-           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-           'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-           'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-           'This Month': [moment().startOf('month'), moment().endOf('month')],
-           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+           'Hoy': [moment(), moment()],
+           'Ayer': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+           'Últimos 7 días': [moment().subtract(6, 'days'), moment()],
+           'Últimos 30 días': [moment().subtract(29, 'days'), moment()],
+           'Este més': [moment().startOf('month'), moment().endOf('month')],
+           'Último més': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
         }
     }, cb);
 

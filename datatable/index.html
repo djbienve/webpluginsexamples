@@ -501,7 +501,12 @@
 <script src="js/dataTables.bootstrap.min.js"></script>
 <script>
 	$(document).ready(function() {
+
     $('#example').DataTable({
+        aLengthMenu: [
+        [25, 50, 100, 200, -1],
+        [25, 50, 100, 200, "Todo"]
+    ],
         "language": {
            "sProcessing":     "Procesando...",
     "sLengthMenu":     "Mostrar _MENU_ registros",

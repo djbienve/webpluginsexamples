@@ -21,9 +21,8 @@
 
 <img src="img/2.png" alt="">
 <script>
-
 //traduccirlo en español, por defecto viene en ingles
-moment.lang('es', {
+moment.locale('es', {
   months: 'Enero_Febrero_Marzo_Abril_Mayo_Junio_Julio_Agosto_Septiembre_Octubre_Noviembre_Diciembre'.split('_'),
   monthsShort: 'Enero._Feb._Mar_Abr._May_Jun_Jul._Ago_Sept._Oct._Nov._Dec.'.split('_'),
   weekdays: 'Domingo_Lunes_Martes_Miercoles_Jueves_Viernes_Sabado'.split('_'),
@@ -41,7 +40,7 @@ moment.lang('es', {
 	var localLocale = moment('1993-10-23 00:00:00');
 moment.locale('es');
 localLocale.locale(false);
-//alert(localLocale.format('LLLL')); 
+ 
 
 </script>
 

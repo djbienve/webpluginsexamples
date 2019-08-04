@@ -54,6 +54,8 @@ $(function() {
 <script>
 $(function() {
   $('input[name="birthday"]').daterangepicker({
+    timePicker: true, 
+    "timePicker24Hour": true,
     singleDatePicker: true,
     showDropdowns: true,
     minYear: 1901,
@@ -61,6 +63,9 @@ $(function() {
   }, function(start, end, label) {
     var years = moment().diff(start, 'years');
     alert("You are " + years + " years old!");
+
+    console.log('New date range selected: ' + start.format('YYYY-MM-DD hh:mm') + ' to ' + end.format('YYYY-MM-DD hh:mm') + ' (predefined range: ' + label + ')');
+
   });
 });
 </script>

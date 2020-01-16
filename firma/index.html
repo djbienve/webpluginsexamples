@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Firmas</title>
+	<style>
+		#sig-canvas {
+  border: 2px dotted #CCCCCC;
+  border-radius: 15px;
+  cursor: crosshair;
+		}
+	</style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+</head>
+<body>
+
+	<!-- Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Firma Digital</h1>
+				<p>Firma en la imagen y guardalo como imagen</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+		 		<canvas id="sig-canvas" width="620" height="160">
+		 			Get a better browser, bro.
+		 		</canvas>
+		 	</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<button class="btn btn-primary" id="sig-submitBtn">representar aqui</button>
+				<button class="btn btn-default" id="sig-clearBtn">Limpiar</button>
+				<button class="btn btn-primary" id="sig-submitBtnForm">Enviar por AJAX</button>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-12">
+				<textarea id="sig-dataUrl" class="form-control" rows="5">
+				Aqui guardamos la dataURL
+
+			</textarea>
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-12">
+				<img id="sig-image" src="" alt="Aqui veras la imagen de tu frma!"/>
+			</div>
+		</div>
+	</div>
+<br><br>Lo enviado por ajax se registra aqui<br>
+
+<img id="sig-imageFORM" src="" alt="Aqui veras la imagen de tu frma!"/>
+
+<br><br><br>
+<i>Nota: Lo importante aqui es que lo que se dibuja en el canvas se recoge como dataURL el cual se guarda en la BD como texto nomal. <br>
+Si queremos volver a representar dicha firma como imagen, lo que tenemos que hacer es asignar el texto guardado en la propiedad SRC de una etiqueta IMG</i>
+	
+</body>
+
+<script>
+	(function() {
+  window.requestAnimFrame = (function(callback) {
+    return window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      window.oRequestAnimationFrame ||
+      window.msRequestAnimaitonFrame ||
+      function(callback) {
+        window.setTimeout(callback, 1000 / 60);
+      };
+  })();
+
+  var canvas = document.getElementById("sig-canvas");
+  var ctx = canvas.getContext("2d");
+  ctx.strokeStyle = "#222222";
+  //grosor de la linea
+  ctx.lineWidth = 1;
+
+  var drawing = false;
+  var mousePos = {
+    x: 0,
+    y: 0
+  };
+  var lastPos = mousePos;
+
+  canvas.addEventListener("mousedown", function(e) {
+    drawing = true;
+    lastPos = getMousePos(canvas, e);
+  }, false);
+
+  canvas.addEventListener("mouseup", function(e) {
+    drawing = false;
+  }, false);
+
+  canvas.addEventListener("mousemove", function(e) {
+    mousePos = getMousePos(canvas, e);
+  }, false);
+
+  // Add touch event support for mobile
+  canvas.addEventListener("touchstart", function(e) {
+
+  }, false);
+
+  canvas.addEventListener("touchmove", function(e) {
+    var touch = e.touches[0];
+    var me = new MouseEvent("mousemove", {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+    canvas.dispatchEvent(me);
+  }, false);
+
+  canvas.addEventListener("touchstart", function(e) {
+    mousePos = getTouchPos(canvas, e);
+    var touch = e.touches[0];
+    var me = new MouseEvent("mousedown", {
+      clientX: touch.clientX,
+      clientY: touch.clientY
+    });
+    canvas.dispatchEvent(me);
+  }, false);
+
+  canvas.addEventListener("touchend", function(e) {
+    var me = new MouseEvent("mouseup", {});
+    canvas.dispatchEvent(me);
+  }, false);
+
+  function getMousePos(canvasDom, mouseEvent) {
+    var rect = canvasDom.getBoundingClientRect();
+    return {
+      x: mouseEvent.clientX - rect.left,
+      y: mouseEvent.clientY - rect.top
+    }
+  }
+
+  function getTouchPos(canvasDom, touchEvent) {
+    var rect = canvasDom.getBoundingClientRect();
+    return {
+      x: touchEvent.touches[0].clientX - rect.left,
+      y: touchEvent.touches[0].clientY - rect.top
+    }
+  }
+
+  function renderCanvas() {
+    if (drawing) {
+      ctx.moveTo(lastPos.x, lastPos.y);
+      ctx.lineTo(mousePos.x, mousePos.y);
+      ctx.stroke();
+      lastPos = mousePos;
+    }
+  }
+
+  // Prevent scrolling when touching the canvas
+  document.body.addEventListener("touchstart", function(e) {
+    if (e.target == canvas) {
+      e.preventDefault();
+    }
+  }, false);
+  document.body.addEventListener("touchend", function(e) {
+    if (e.target == canvas) {
+      e.preventDefault();
+    }
+  }, false);
+  document.body.addEventListener("touchmove", function(e) {
+    if (e.target == canvas) {
+      e.preventDefault();
+    }
+  }, false);
+
+  (function drawLoop() {
+    requestAnimFrame(drawLoop);
+    renderCanvas();
+  })();
+
+//limpiar el contenido del canvas
+  function clearCanvas() {
+
+    canvas.width = canvas.width;
+  }
+
+  //función para saber si el cancas está vacio o en blanco
+
+  function isCanvasBlank(canvas) {
+  const blank = document.createElement('canvas');
+
+  blank.width = canvas.width;
+  blank.height = canvas.height;
+
+  return canvas.toDataURL() === blank.toDataURL();
+ }
+
+  // Set up the UI
+  var sigText = document.getElementById("sig-dataUrl"); //textarea de la url del canvas
+  var sigImage = document.getElementById("sig-image"); //etiqueta de imagen donde se visualizara la imagen 
+  var clearBtn = document.getElementById("sig-clearBtn"); //boton para limpiar el canvas
+  var submitBtn = document.getElementById("sig-submitBtn"); //boton de procesamiento del canvas
+  var submitBtnForm = document.getElementById("sig-submitBtnForm"); //enviar al php
+  var sigImageFORM = document.getElementById("sig-imageFORM");
+  
+
+  //al hacer click en el boton de limpiar firma
+  clearBtn.addEventListener("click", function(e) {
+    clearCanvas();
+    sigText.innerHTML = "Data URL del canvas irá aqui";
+
+    sigImage.setAttribute("src", ""); //eliminar la imagen
+  }, false);
+
+//Al hacer click en el botonde enviar
+  submitBtn.addEventListener("click", function(e) {
+
+  	//comprobar que el canvas NO ESTE VACIO
+  	if (!isCanvasBlank(canvas)) {
+  		
+  		var dataUrl = canvas.toDataURL();
+    	sigText.innerHTML = dataUrl;
+    	sigImage.setAttribute("src", dataUrl);
+  	}else{
+  		//https://stackoverflow.com/questions/17386707/how-to-check-if-a-canvas-is-blank
+  		console.log('No se ha firmado');
+  	}
+    
+  }, false);
+
+  //Al hacer click en el botonde enviar
+  submitBtnForm.addEventListener("click", function(e) {
+
+  	//comprobar que el canvas NO ESTE VACIO
+  	if (!isCanvasBlank(canvas)) {
+  		
+  		var dataUrl = canvas.toDataURL();
+    	sigText.innerHTML = dataUrl;
+    	sigImage.setAttribute("src", dataUrl);
+
+    	// save canvas image as data url (png format by default)
+      var dataURL = canvas.toDataURL();
+		$.ajax({
+		        type: "POST",
+		        url: "http://localhost/firma/firma.php",
+		        data: { 
+		           imgBase64: dataURL
+		        }
+		      }).done(function(response) {
+		        console.log('saved: ' + response); 
+		        sigImageFORM.setAttribute("src", response);
+		      });
+
+
+
+  	}else{
+  		//https://stackoverflow.com/questions/17386707/how-to-check-if-a-canvas-is-blank
+  		console.log('No se ha firmado');
+  	}
+    
+  }, false);
+
+
+
+
+})();
+
+</script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="jquery-1.12.1.min.js"></script>
+    <script type="text/javascript" src="jquery.elevateZoom-3.0.8.min.js"></script>
+    <style type="text/css">
+       .galeria {
+      	padding: 0px;
+      	margin: 0px;
+      	list-style-type: none;
+      }
+      .galeria li{
+      	width:350px;
+      	height:350px;
+      	margin:20px;
+      	float:left;
+      	display:block;
+      }
+      </style>
+  </head>
+  <body>
+    <ul class="galeria">
+        	<li><img src="mujer1.jpg" width="350" height="350" data-zoom-image="mujer1.jpg" alt="" id="foto1"></li>
+        	<li><img src="mujer2.jpg" width="350" height="350" data-zoom-image="mujer2.jpg" alt="" id="foto2"></li>
+        	<li><img src="mujer3.jpg" width="350" height="350" data-zoom-image="mujer3.jpg" alt="" id="foto3"></li>
+        </ul>
+
+    <a href="https://www.elevateweb.co.uk/image-zoom/configuration/">Mas informacion</a>
+  </body>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $("#foto1").elevateZoom({
+      tint:true,
+      tintColour:'#F90',
+      tintOpacity:0.5
+    });
+      $("#foto2").elevateZoom({
+        tint:true,
+        tintColour:'#F90',
+        tintOpacity:0.5
+      });
+      $("#foto3").elevateZoom({
+        scrollZoom : true,
+        zoomWindowPosition: 10
+      });
+    });
+  </script>
+</html>

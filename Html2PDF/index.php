@@ -20,7 +20,17 @@
     <td>94</td>
   </tr>
 </table>
- <br><br>
+
+jkkgjgkj <br>
+khjh <br>
+j
+kjkjkj <br>
+ <br>jjkjkk
+
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>dfsdfsdf
+ <br><br><br><br><br><br><br><br><br><br>dsfsfsdfs
+ <br><br><br><br><br><br><br><br><br><br>sfdsdfsdfsd
+ <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>adfsdfsdfsd
 <barcode dimension="1D" type="EAN13" value="45" label="label" style="width:30mm; height:6mm; color: #770000; font-size: 4mm"></barcode> <br><br>
 <qrcode value="Value to Coder" ec="H" style="width: 50mm; background-color: white; color: black;"></qrcode>
  <br>
@@ -41,4 +51,4 @@ $html2pdf = new Html2Pdf('P','A4','fr','UTF-8');
 $html2pdf->writeHTML($content);
 $html2pdf->output('nombre.pdf');
 
-?>
+?> 
